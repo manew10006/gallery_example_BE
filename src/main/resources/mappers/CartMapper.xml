@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.wikibook.gallery.cart.CartMapper">
+    <insert id="save">
+        INSERT into carts
+        set member_id = #{memberId},
+            item_id = #{itemId}
+    </insert>
+
+    <select id="findAllWithItemByMemberId">
+        SELECT c.id, I.NAME , I.img_path, I.price, I.discount_per
+              FROM carts C
+        INNER JOIN items I
+                ON C.item_id = I.id
+             WHERE c.member_id = #{member_id}
+
+    </select>
+
+    <delete id="deleteByMemberIdAndItemId">
+        DELETE
+        FROM carts
+        WHERE member_id = #{memberId}
+        AND item_id = #{itemId}
+
+    </delete>
+
+</mapper>

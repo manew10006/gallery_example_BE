@@ -9,4 +9,5 @@ import java.util.List;
 public interface ItemMapper {
     List<ItemGetRes> findAllByIdIn(List<Integer> ids);
 
+
 }
